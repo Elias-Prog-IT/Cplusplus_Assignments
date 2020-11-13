@@ -1,8 +1,9 @@
 /*
 	@Author Elias Posluk
+	Student-id: b15elipo
 	@date 2016-01-07
 	Kortspel
-	Högskolan i Skövde
+	HÃ¶gskolan i SkÃ¶vde
 */
 
 #include <iostream>
@@ -25,14 +26,14 @@ void initDect(cards*);
 void writeToFile(games* game);
 void exitGame();
 
-enum suit { //Sätter rankningen till korten, där clubs/klöver är lägsta och spades är högsta
+enum suit { //SÃ¤tter rankningen till korten, dÃ¤r clubs/klÃ¶ver Ã¤r lÃ¤gsta och spades Ã¤r hÃ¶gsta
 	clubs = 1,
 	diamonds,
 	hearts,
 	spades,
 };
 
-enum value { //Sätter rankningen till korten, där Ess räknas som den lägsta kortet, och King är högsta.
+enum value { //SÃ¤tter rankningen till korten, dÃ¤r Ess rÃ¤knas som den lÃ¤gsta kortet, och King Ã¤r hÃ¶gsta.
 	Ace = 1,
 	Two,
 	Three,
@@ -48,14 +49,14 @@ enum value { //Sätter rankningen till korten, där Ess räknas som den lägsta kort
 	King
 };
 
-struct player { // skapar variabler för spelarna, som ska användas under spelets gång.
+struct player { // skapar variabler fÃ¶r spelarna, som ska anvÃ¤ndas under spelets gÃ¥ng.
 	string name;
 	int score = 0;
 	int matchLoses = 0;
 	int matchWins = 0;
 };
 
-struct games { //skapar två spelare
+struct games { //skapar tvÃ¥ spelare
 	player player1;
 	player player2;
 };
@@ -65,13 +66,13 @@ struct cards //
 	suit value;
 	suit suit;
 	int order; //ordningen i korten/decken
-	bool used; // kollar om korten är använd eller ej.
-	bool taken; // kollar om kortet är tagen eller ej
+	bool used; // kollar om korten Ã¤r anvÃ¤nd eller ej.
+	bool taken; // kollar om kortet Ã¤r tagen eller ej
 };
 
 int main() {
 	cards dect[52]; // kort arrayen
-	int dectOrder[52]; // int array med som håller koll på ordningen på korten.
+	int dectOrder[52]; // int array med som hÃ¥ller koll pÃ¥ ordningen pÃ¥ korten.
 	int choice = 0;
 	string playerName1, playerName2;
 	playerName1 = "default1";
@@ -92,13 +93,13 @@ int main() {
 			if (choice < 0)
 			{
 				std::string draw;
-				std::cout << "You typed in an invalid option! Try again! " << endl; //Felmedellande om man trycker på allt under siffran 1.
+				std::cout << "You typed in an invalid option! Try again! " << endl; //Felmedellande om man trycker pÃ¥ allt under siffran 1.
 				std::cout << "Press any key to continue" << endl;
 				std::cin >> draw;
 			}
 			else if (choice == 1)
 			{
-				playNewGame(&game, &dect[0], &dectOrder[0]); //kallelse till funktionen 'playNewGame', som kör igång spelet.
+				playNewGame(&game, &dect[0], &dectOrder[0]); //kallelse till funktionen 'playNewGame', som kÃ¶r igÃ¥ng spelet.
 			}
 			else if (choice == 2)
 			{
@@ -110,7 +111,7 @@ int main() {
 			}
 			else if (choice == 4)
 			{
-				exitGame(); //kallar på funktionen, som avslutar spelet.
+				exitGame(); //kallar pÃ¥ funktionen, som avslutar spelet.
 			}
 			else if (choice == 5)
 			{
@@ -119,7 +120,7 @@ int main() {
 			else if (choice > 5 || choice)
 			{
 				std::string draw;
-				std::cout << "You typed in an invalid option! Try again! " << endl;//Felmedellande om man trycker på siffran över 4.
+				std::cout << "You typed in an invalid option! Try again! " << endl;//Felmedellande om man trycker pÃ¥ siffran Ã¶ver 4.
 				std::cout << "Press any key to continue" << endl;
 				std::cin >> draw;
 			}
@@ -143,7 +144,7 @@ int menu() //Menun till spelet
 		std::cin >> choice;
 		bFail = cin.fail();
 		cin.clear();
-		cin.ignore(numeric_limits<streamsize>::max(), '\n'); //Låter bli att krascha, efter felaktiga input.
+		cin.ignore(numeric_limits<streamsize>::max(), '\n'); //LÃ¥ter bli att krascha, efter felaktiga input.
 	} while (bFail == true);
 	return choice;
 }
@@ -155,7 +156,7 @@ int name(games* game) {
 
 	std::cout << "Type in your names" << endl;
 	std::cout << "Type in your name player1" << endl;
-	std::getline(cin, gamePtr->player1.name); // för att kunna ta in namn med mellanslag
+	std::getline(cin, gamePtr->player1.name); // fÃ¶r att kunna ta in namn med mellanslag
 	std::cout << "Type in your name player2" << endl;
 	std::getline(cin, gamePtr->player2.name);
 	std::cout << endl;
@@ -195,14 +196,14 @@ int playNewGame(games* game, cards* card, int* cardOrd) {
 
 		cardOrdPtr++;
 	}
-	if (gamePtr->player1.score > gamePtr->player2.score) // När man har kört en match,så plusas vinnarens vinst i antal vunna matcher.
-	{													// Samt så plusas förlorarens förlorade matcher efter varje genomgången match. 
-		gamePtr->player1.matchWins++;					//Och så nollställs bägge spelarnas scores, efter varje match.
+	if (gamePtr->player1.score > gamePtr->player2.score) // NÃ¤r man har kÃ¶rt en match,sÃ¥ plusas vinnarens vinst i antal vunna matcher.
+	{													// Samt sÃ¥ plusas fÃ¶rlorarens fÃ¶rlorade matcher efter varje genomgÃ¥ngen match. 
+		gamePtr->player1.matchWins++;					//Och sÃ¥ nollstÃ¤lls bÃ¤gge spelarnas scores, efter varje match.
 		gamePtr->player2.matchLoses++;
 		gamePtr->player1.score = 0;
 		gamePtr->player2.score = 0;
 	}
-	if (gamePtr->player1.score < gamePtr->player2.score)// Samma sak, fast för spelare 2.
+	if (gamePtr->player1.score < gamePtr->player2.score)// Samma sak, fast fÃ¶r spelare 2.
 	{
 		gamePtr->player2.matchWins++;
 		gamePtr->player1.matchLoses++;
@@ -212,7 +213,7 @@ int playNewGame(games* game, cards* card, int* cardOrd) {
 	return 0;
 }
 
-void gameMenu(games* game, cards* player1Card, cards* player2Card, int nrOfDrawnCards) { // Här "spelas" spelet
+void gameMenu(games* game, cards* player1Card, cards* player2Card, int nrOfDrawnCards) { // HÃ¤r "spelas" spelet
 	int drawnCards = nrOfDrawnCards;
 	string draw;
 	games* gamePtr;
@@ -225,16 +226,16 @@ void gameMenu(games* game, cards* player1Card, cards* player2Card, int nrOfDrawn
 	suit r;
 	suit r2;
 	system("cls");
-	std::cout << "Total Points for this set" << endl; // skapar poängtabellen
+	std::cout << "Total Points for this set" << endl; // skapar poÃ¤ngtabellen
 	std::cout << "============" << endl;
 	std::cout << gamePtr->player1.name << "\t" << gamePtr->player1.score << endl;
 	std::cout << gamePtr->player2.name << "\t" << gamePtr->player2.score << endl;
-	if (drawnCards == 0) { // När inga kort är dragna
+	if (drawnCards == 0) { // NÃ¤r inga kort Ã¤r dragna
 		std::cout << "============" << endl;
 		std::cout << gamePtr->player1.name << "\t" << "\t" << "\t" << gamePtr->player2.name << endl;
 		std::cout << "=========================================" << endl;
 	}
-	if ((drawnCards == 1) || (drawnCards == 3) || (drawnCards == 5)) { //När första spelarens kort är dragen.
+	if ((drawnCards == 1) || (drawnCards == 3) || (drawnCards == 5)) { //NÃ¤r fÃ¶rsta spelarens kort Ã¤r dragen.
 		std::cout << "============" << endl;
 		std::cout << gamePtr->player1.name << "\t" << "\t" << "\t" << gamePtr->player2.name << endl;
 		std::cout << "=========================================" << endl;
@@ -262,7 +263,7 @@ void gameMenu(games* game, cards* player1Card, cards* player2Card, int nrOfDrawn
 		case value::King: std::cout << "King\t\t"; break;
 		}
 	}
-	if ((drawnCards == 2) || (drawnCards == 4) || (drawnCards == 6)) { // När bägge korten är dragna
+	if ((drawnCards == 2) || (drawnCards == 4) || (drawnCards == 6)) { // NÃ¤r bÃ¤gge korten Ã¤r dragna
 		std::cout << "============" << endl;
 		std::cout << gamePtr->player1.name << "\t" << "\t" << "\t" << gamePtr->player2.name << endl;
 		std::cout << "=========================================" << endl;
@@ -430,7 +431,7 @@ void showScoreBoard(games* game) { // Visar antalet vunna matcher, efter att man
 	std::cin >> draw;
 }
 
-void initDect(cards* card) { //Skapar kortleken i arrayen, spader, hjärter, rutor, klöver
+void initDect(cards* card) { //Skapar kortleken i arrayen, spader, hjÃ¤rter, rutor, klÃ¶ver
 	cards *card1;
 	card1 = card;
 	for (int i = 1; i <= 13; i++) { // spader
@@ -475,18 +476,18 @@ void writeToFile(games* game)//Funktionen som sparar ner information om spelaren
 
 	ofstream outFile;
 	outFile.open("CardGame.txt"); //Textdokumentet som informationen kommer sparas till heter "CardGame.txt" 
-	outFile << "Player " << gamePtr->player1.name << " got: " << gamePtr->player1.matchWins << " match wins. " << std::endl << std::endl; //Visar spelarens namn samt hur många matcher man har vunnit samt förlorat.
+	outFile << "Player " << gamePtr->player1.name << " got: " << gamePtr->player1.matchWins << " match wins. " << std::endl << std::endl; //Visar spelarens namn samt hur mÃ¥nga matcher man har vunnit samt fÃ¶rlorat.
 	outFile << "Player " << gamePtr->player1.name << " got: " << gamePtr->player1.matchLoses << " match loss." << std::endl << std::endl;
-	outFile << "Player " << gamePtr->player2.name << " got: " << gamePtr->player2.matchWins << " match wins. " << std::endl << std::endl; //Visar spelare tvås namn samt hur många matcher man har vunnit samt förlorat.
+	outFile << "Player " << gamePtr->player2.name << " got: " << gamePtr->player2.matchWins << " match wins. " << std::endl << std::endl; //Visar spelare tvÃ¥s namn samt hur mÃ¥nga matcher man har vunnit samt fÃ¶rlorat.
 	outFile << "Player " << gamePtr->player2.name << " got: " << gamePtr->player2.matchLoses << " match loss." << std::endl << std::endl;
 	outFile.close();
-	std::cout << "Your information is saved to file!" << endl; //Ger återkoppling till spelaren, att informationen har sparats.
+	std::cout << "Your information is saved to file!" << endl; //Ger Ã¥terkoppling till spelaren, att informationen har sparats.
 	std::cout << "Press any key to continue" << endl;
 
 	std::cin >> draw;
 }
 
-void exitGame() { // trycker spelaren på nr.4 i menyn, så stängs programmet av.
+void exitGame() { // trycker spelaren pÃ¥ nr.4 i menyn, sÃ¥ stÃ¤ngs programmet av.
 	std::cout << "Game over" << endl;
 	system("pause");
 	exit(1);
