@@ -1,8 +1,9 @@
 /*
 	@Author Elias Posluk
+	Student-id: b15elipo
 	@date 2015-10-07
-	Tärningsspel
-	Högskolan i Skövde
+	TÃ¤rningsspel
+	HÃ¶gskolan i SkÃ¶vde
 */
 #include <iostream>
 #include <string>
@@ -25,26 +26,26 @@ int main()
 
 	string name;
 
-	srand((unsigned int)time(NULL));// fick varning när jag hade srand()(time(0)), så jag gjorde lite google sökning och fick fram att man ska ha "unsigned int" för att få bort varningen. 
+	srand((unsigned int)time(NULL));// fick varning nÃ¤r jag hade srand()(time(0)), sÃ¥ jag gjorde lite google sÃ¶kning och fick fram att man ska ha "unsigned int" fÃ¶r att fÃ¥ bort varningen. 
 
-	//Välkomstmeddelande, och förfrågar namnet på spelaren.
+	//VÃ¤lkomstmeddelande, och fÃ¶rfrÃ¥gar namnet pÃ¥ spelaren.
 	std::cout << "***************************************" << endl;
 	std::cout << " ******* " << " Welcome to the dice game! " << " *******" << endl;
 	std::cout << "***************************************" << endl;
 	std::cout << "What's your name?" << endl;
 	cin >> name;
-	do																	//Do-while loop som loopar igång menyn till spelet. Menyn innehåller 4 val. Samt felmedellande om man väljer val som inte finns i menyn.
+	do																	//Do-while loop som loopar igÃ¥ng menyn till spelet. Menyn innehÃ¥ller 4 val. Samt felmedellande om man vÃ¤ljer val som inte finns i menyn.
 	{
 		choice = menu();
 		if (cin.good())
 		{
 			if (choice < 0)
 			{
-				std::cout << "You typed in an invalid option! Try again! " << endl; //Felmedellande om man trycker på allt under siffran 1.
+				std::cout << "You typed in an invalid option! Try again! " << endl; //Felmedellande om man trycker pÃ¥ allt under siffran 1.
 			}
 			else if (choice == 1)
 			{
-				playNewGame(name, balance, betMoney, deposit, userScore, pcScore); //kallelse till funktionen 'playNewGame', som kör igång spelet.
+				playNewGame(name, balance, betMoney, deposit, userScore, pcScore); //kallelse till funktionen 'playNewGame', som kÃ¶r igÃ¥ng spelet.
 			}
 			else if (choice == 2)
 			{
@@ -56,11 +57,11 @@ int main()
 			}
 			else if (choice == 4)
 			{
-				exitGame(); //kallar på funktionen, som avslutar spelet.
+				exitGame(); //kallar pÃ¥ funktionen, som avslutar spelet.
 			}
 			else if (choice > 4)
 			{
-				std::cout << "You typed in an invalid option! Try again! " << endl;//Felmedellande om man trycker på siffran över 4.
+				std::cout << "You typed in an invalid option! Try again! " << endl;//Felmedellande om man trycker pÃ¥ siffran Ã¶ver 4.
 			}
 		}
 	} while (choice != 4);
@@ -82,9 +83,9 @@ void readFromFile(string &name, int &balance) //Funktionen som sparar ner inform
 {
 	ofstream outFile;
 	outFile.open("DiceGame.txt"); //Textdokumentet som informationen kommer sparas till heter "DiceGame.txt" 
-	outFile << "User " << name << " got the amount " << balance << " kr" << std::endl; //Visar spelarens namn samt hur mycket man har på kontot.
+	outFile << "User " << name << " got the amount " << balance << " kr" << std::endl; //Visar spelarens namn samt hur mycket man har pÃ¥ kontot.
 	outFile.close();
-	std::cout << "Your information is saved!" << endl; //Ger återkoppling till spelarn att informationen har sparats.
+	std::cout << "Your information is saved!" << endl; //Ger Ã¥terkoppling till spelarn att informationen har sparats.
 }
 void showBalance(int &balance) // Visar spelarns konto summa. 
 {
@@ -98,21 +99,21 @@ void playNewGame(string name, int &balance, int betMoney, int deposit, int userS
 	int maxAmount = 5000;
 	char change = 'y';
 
-	std::cout << "Welcome " << name << " ! " << std::endl; //Kör man igång spelet, så möts man med en hälsning samt påminelse på hur mycket man har i kontot. 
+	std::cout << "Welcome " << name << " ! " << std::endl; //KÃ¶r man igÃ¥ng spelet, sÃ¥ mÃ¶ts man med en hÃ¤lsning samt pÃ¥minelse pÃ¥ hur mycket man har i kontot. 
 	std::cout << "Your account  balance is " << balance << " kr" << std::endl;
 	std::cout << std::endl;
 
-	if (balance <= 0) //Om man inte har pengar i kontot, dvs har 0kr, så hamnar man här, där spelaren får sätta in pengar.
+	if (balance <= 0) //Om man inte har pengar i kontot, dvs har 0kr, sÃ¥ hamnar man hÃ¤r, dÃ¤r spelaren fÃ¥r sÃ¤tta in pengar.
 	{
 		std::cout << "You unfortunately don't have enough money in your account. " << std::endl;
 		std::cout << "How much money do you want to deposit? " << std::endl;
 		cin >> deposit;
-		if (deposit == 100 || deposit == 300 || deposit == 500) // Kollar om spelaren sätter in rätt mängd pengar som man får sätta in. 
+		if (deposit == 100 || deposit == 300 || deposit == 500) // Kollar om spelaren sÃ¤tter in rÃ¤tt mÃ¤ngd pengar som man fÃ¥r sÃ¤tta in. 
 		{
-			std::cout << "Your amount to deposit is admited" << std::endl; // Får återkoppling att ens insättning har gått bra till.
+			std::cout << "Your amount to deposit is admited" << std::endl; // FÃ¥r Ã¥terkoppling att ens insÃ¤ttning har gÃ¥tt bra till.
 			std::cout << (balance = (balance + deposit)) << std::endl;
 		}
-		else if (deposit != 100 || deposit != 300 || deposit != 500) //Om man inte sätter in rätt mängd, så får man felmedellande där man får återkoppling om vad som gick fel, samt att kunna göra om det igen.
+		else if (deposit != 100 || deposit != 300 || deposit != 500) //Om man inte sÃ¤tter in rÃ¤tt mÃ¤ngd, sÃ¥ fÃ¥r man felmedellande dÃ¤r man fÃ¥r Ã¥terkoppling om vad som gick fel, samt att kunna gÃ¶ra om det igen.
 		{
 			std::cout << "The entered amount is not an accepted value! " << std::endl;
 			std::cout << "Please make a new bet with the amount of either 100kr, 300kr, or 500kr" << std::endl;
@@ -120,8 +121,8 @@ void playNewGame(string name, int &balance, int betMoney, int deposit, int userS
 			balance = (balance + deposit);
 		}
 	}
-	else if (balance > 0) // Om man har kört en omgång innan och kör omspelet, så hamnar man här, om man fortfarande har pengar i kontot. Då blir man tillfrågad om man vill sätta in mer pengar i kontot. 
-	{							//Svarar man med 'y' eller 'Y', så går man in i  if-satsen där man får sätta in pengar. Annars om man väljer 'n' eller 'N' så hamnar man direkt på bettningen.
+	else if (balance > 0) // Om man har kÃ¶rt en omgÃ¥ng innan och kÃ¶r omspelet, sÃ¥ hamnar man hÃ¤r, om man fortfarande har pengar i kontot. DÃ¥ blir man tillfrÃ¥gad om man vill sÃ¤tta in mer pengar i kontot. 
+	{							//Svarar man med 'y' eller 'Y', sÃ¥ gÃ¥r man in i  if-satsen dÃ¤r man fÃ¥r sÃ¤tta in pengar. Annars om man vÃ¤ljer 'n' eller 'N' sÃ¥ hamnar man direkt pÃ¥ bettningen.
 		std::cout << "Do you want to do an extra deposit to your account?  (y/n)" << std::endl;
 		cin >> change;
 		if (change == 'y' || change == 'Y')
@@ -130,12 +131,12 @@ void playNewGame(string name, int &balance, int betMoney, int deposit, int userS
 			cin >> deposit;
 			if (deposit + balance < maxAmount)
 			{
-				if (deposit == 100 || deposit == 300 || deposit == 500) // Kollar om spelaren sätter in rätt mängd pengar som man får sätta in. 
+				if (deposit == 100 || deposit == 300 || deposit == 500) // Kollar om spelaren sÃ¤tter in rÃ¤tt mÃ¤ngd pengar som man fÃ¥r sÃ¤tta in. 
 				{
 					std::cout << "Your amount to deposit is admited" << std::endl;
 					std::cout << (balance = (balance + deposit)) << std::endl;
 				}
-				else if (deposit != 100 || deposit != 300 || deposit != 500)  //Om man inte sätter in rätt mängd, så får man felmedellande där man får återkoppling om vad som gick fel, samt att kunna göra om det igen.
+				else if (deposit != 100 || deposit != 300 || deposit != 500)  //Om man inte sÃ¤tter in rÃ¤tt mÃ¤ngd, sÃ¥ fÃ¥r man felmedellande dÃ¤r man fÃ¥r Ã¥terkoppling om vad som gick fel, samt att kunna gÃ¶ra om det igen.
 				{
 					std::cout << "The entered amount is not an accepted value! " << std::endl;
 					std::cout << "Please make a new bet with the amount of either 100kr, 300kr, or 500kr" << std::endl;
@@ -143,7 +144,7 @@ void playNewGame(string name, int &balance, int betMoney, int deposit, int userS
 					balance = (balance + deposit);
 				}
 			}
-			else if (maxAmount < balance + deposit) // Här kommer spärren på 5000kr, if-satsen kollar på hur mycket du har i kontot, samt hur mycket du vill sätta in i kontot igen inte överstiger maxsumman på kontot.
+			else if (maxAmount < balance + deposit) // HÃ¤r kommer spÃ¤rren pÃ¥ 5000kr, if-satsen kollar pÃ¥ hur mycket du har i kontot, samt hur mycket du vill sÃ¤tta in i kontot igen inte Ã¶verstiger maxsumman pÃ¥ kontot.
 			{
 				std::cout << "Sorry, but you can  only have 5000kr in your account. " << std::endl;
 				std::cout << " Your account balance now: " << balance << " kr" << std::endl;
@@ -152,12 +153,12 @@ void playNewGame(string name, int &balance, int betMoney, int deposit, int userS
 	}
 	std::cout << "How much money do you want to bet? " << endl;
 	cin >> betMoney;
-	if (betMoney == 100 || betMoney == 300 || betMoney == 500)//Checkar av så att man bettar rätt mängd som är tillåtet
+	if (betMoney == 100 || betMoney == 300 || betMoney == 500)//Checkar av sÃ¥ att man bettar rÃ¤tt mÃ¤ngd som Ã¤r tillÃ¥tet
 	{
 		std::cout << "Your bet is admited" << endl;
 		balance = (balance - betMoney);
 	}
-	else if (betMoney != 100 || betMoney != 300 || betMoney != 500) // Blir en återkoppling som påmminer om hur mycket man får betta, om man bettar fel summa.
+	else if (betMoney != 100 || betMoney != 300 || betMoney != 500) // Blir en Ã¥terkoppling som pÃ¥mminer om hur mycket man fÃ¥r betta, om man bettar fel summa.
 	{
 		std::cout << "The entered amount is not an accepted value! " << endl;
 		std::cout << "Please make a new bet with the amount of either 100kr, 300kr, or 500kr" << endl;
@@ -166,13 +167,13 @@ void playNewGame(string name, int &balance, int betMoney, int deposit, int userS
 	}
 	cout << "You betted :" << betMoney << endl;
 	std::cout << "Your account balance is now " << balance << endl;
-	cout << "Press enter to start rolling your dices' " << endl; //För att påbörja dicespelet krävs att man trycker på enter
+	cout << "Press enter to start rolling your dices' " << endl; //FÃ¶r att pÃ¥bÃ¶rja dicespelet krÃ¤vs att man trycker pÃ¥ enter
 	getchar();
 	getchar();
 	int i = 0;
 	userScore = 0;
 	pcScore = 0;
-	while (i < 3) // Loopar igenom tärningskasten max tre gånger.
+	while (i < 3) // Loopar igenom tÃ¤rningskasten max tre gÃ¥nger.
 	{
 		i++;
 		firstDice = rand() % 6 + 1;
@@ -187,41 +188,41 @@ void playNewGame(string name, int &balance, int betMoney, int deposit, int userS
 		fourthDice = rand() % 6 + 1;
 		std::cout << "Computers second dice is a : " << fourthDice << endl << endl;
 
-		if (firstDice > secondDice) //om spelarens första tärning är större än den andra tärningen.
+		if (firstDice > secondDice) //om spelarens fÃ¶rsta tÃ¤rning Ã¤r stÃ¶rre Ã¤n den andra tÃ¤rningen.
 		{
-			userDie1 = firstDice; //Så hamnar tärningens summa i variabeln userDie1
+			userDie1 = firstDice; //SÃ¥ hamnar tÃ¤rningens summa i variabeln userDie1
 		}
 		else
 		{
-			userDie1 = secondDice; //Annars är spelarens andra tärning större än spelarens första tärning, och den summan hamnar i variabeln userDie1.
+			userDie1 = secondDice; //Annars Ã¤r spelarens andra tÃ¤rning stÃ¶rre Ã¤n spelarens fÃ¶rsta tÃ¤rning, och den summan hamnar i variabeln userDie1.
 		}
-		if (thirdDice > fourthDice)//Här kollar vi om datorns första tärning är större än den andra tärningen.
+		if (thirdDice > fourthDice)//HÃ¤r kollar vi om datorns fÃ¶rsta tÃ¤rning Ã¤r stÃ¶rre Ã¤n den andra tÃ¤rningen.
 		{
-			pcDie1 = thirdDice;//Är datorns första tärning större än andra tärningen, så hamnar datan/summan i variabeln pcDie1.
+			pcDie1 = thirdDice;//Ã„r datorns fÃ¶rsta tÃ¤rning stÃ¶rre Ã¤n andra tÃ¤rningen, sÃ¥ hamnar datan/summan i variabeln pcDie1.
 		}
 		else
 		{
-			pcDie1 = fourthDice;//Om datorns andra tärning är större, så hamnar summan i pcDie1 istället.
+			pcDie1 = fourthDice;//Om datorns andra tÃ¤rning Ã¤r stÃ¶rre, sÃ¥ hamnar summan i pcDie1 istÃ¤llet.
 		}
-		if (userDie1 > pcDie1) //Om spelaren har en högre siffra, så vinner dem rundan
+		if (userDie1 > pcDie1) //Om spelaren har en hÃ¶gre siffra, sÃ¥ vinner dem rundan
 		{
 			std::cout << "You have won the round! " << endl;
 			userScore++;
 		}
-		else if (pcDie1 > userDie1)// datorn vinner rundan om dem har högre siffra
+		else if (pcDie1 > userDie1)// datorn vinner rundan om dem har hÃ¶gre siffra
 		{
 			std::cout << "You have lost the round! " << endl;
 			pcScore++;
 		}
-		else //om bägge spelaren och datorn har likadana siffror, så blir det oavgjort, där datorn får poäng.
+		else //om bÃ¤gge spelaren och datorn har likadana siffror, sÃ¥ blir det oavgjort, dÃ¤r datorn fÃ¥r poÃ¤ng.
 		{
 			std::cout << "*********************" << std::endl;
 			std::cout << "It's a TIE! " << endl;
 			std::cout << "*********************" << std::endl;
 			pcScore++;
 		}
-		std::cout << "The score is: " << name << ": " << userScore << " " << "computer: " << pcScore << endl << endl; // Återkoppling på hur många poäng man har efter rundorna
-		if (pcScore == 2) //Om datorn har vunnit två rundor i rad, så avslutas rundorna med återkoppling att datorn vann.
+		std::cout << "The score is: " << name << ": " << userScore << " " << "computer: " << pcScore << endl << endl; // Ã…terkoppling pÃ¥ hur mÃ¥nga poÃ¤ng man har efter rundorna
+		if (pcScore == 2) //Om datorn har vunnit tvÃ¥ rundor i rad, sÃ¥ avslutas rundorna med Ã¥terkoppling att datorn vann.
 		{
 			std::cout << "*********************" << std::endl;
 			std::cout << "You have LOST the bet. " << endl;
@@ -229,7 +230,7 @@ void playNewGame(string name, int &balance, int betMoney, int deposit, int userS
 			std::cout << "Your balance is now: " << balance << endl << endl;
 			break;
 		}
-		else if (userScore == 2)// Om spelaren vann två rundor i rad, så avslutas rundorna med återkoppling att dem vann.
+		else if (userScore == 2)// Om spelaren vann tvÃ¥ rundor i rad, sÃ¥ avslutas rundorna med Ã¥terkoppling att dem vann.
 		{
 			std::cout << "******CONGRATULATIONS!!******" << endl;
 			std::cout << "You have WON the game!" << endl;
@@ -240,7 +241,7 @@ void playNewGame(string name, int &balance, int betMoney, int deposit, int userS
 		}
 	}
 }
-void exitGame() //Avslutar körningen/spelet.
+void exitGame() //Avslutar kÃ¶rningen/spelet.
 {
 	std::cout << "Game over" << endl;
 	exit(1);
