@@ -1,2 +1,2 @@
 # C++ Assignments
-This is a repository for all the C++ assignments I have done, through different Universities, and freestanding courses.
+This repository is for all the C++ assignments that I have done through different Universities and freestanding courses.
